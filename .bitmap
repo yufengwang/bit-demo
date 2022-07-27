@@ -17,13 +17,13 @@
     },
     "extensions/my-react": {
         "scope": "",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "richard/extensions/my-react"
     },
     "pc/ui/button": {
         "scope": "",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "richard/pc/ui/button"
     },

@@ -21,7 +21,7 @@ const babelConfig = require("./babel/babel.config.json");
 export class MyReactMain {
   static slots = [];
 
-  static dependencies = [ReactAspect, EnvsAspect, BabelAspect];
+  static dependencies = [ReactAspect, EnvsAspect, BabelAspect, CompilerAspect];
 
   static runtime = MainRuntime;
 
