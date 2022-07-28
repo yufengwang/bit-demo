@@ -1,123 +1,81 @@
 import { MainRuntime } from "@teambit/cli";
-import { ReactAspect, ReactMain, UseWebpackModifiers } from "@teambit/react";
-
-import { BabelAspect, BabelMain } from "@teambit/babel";
-import { CompilerAspect, CompilerMain } from "@teambit/compiler";
-
+import { ReactAspect, ReactMain } from "@teambit/react";
 import { EnvsAspect, EnvsMain } from "@teambit/envs";
+import { BabelAspect, BabelMain } from "@teambit/babel";
+import { BuilderAspect } from "@teambit/builder";
 import { MyReactAspect } from "./my-react.aspect";
-import {
-  previewConfigTransformer,
-  devServerConfigTransformer,
-} from "./webpack/webpack-transformers";
+import { devConfigTransformer as devTsConfigTransformer } from "./typescript/ts-transformer";
 
-const babelConfig = require("./babel/babel.config.json");
-
-//import {
-//  devConfigTransformer,
-//  buildConfigTransformer,
-//} from "./typescript/ts-transformer";
+import MultiCompilerAspect, {
+  MultiCompilerMain,
+} from "@teambit/multi-compiler";
+import { babelConfig } from "./babel/babel.config";
+import { ApplicationAspect } from "@teambit/application";
 
 export class MyReactMain {
   static slots = [];
 
-  static dependencies = [ReactAspect, EnvsAspect, BabelAspect, CompilerAspect];
+  static dependencies = [
+    ReactAspect,
+    EnvsAspect,
+    BabelAspect,
+    MultiCompilerAspect,
+    ApplicationAspect,
+    BuilderAspect,
+  ];
 
   static runtime = MainRuntime;
 
-  static async provider([react, envs, babel, compiler]: [
+  static async provider([react, envs, babel, multiCompiler]: [
     ReactMain,
     EnvsMain,
     BabelMain,
-    CompilerMain
+    MultiCompilerMain
   ]) {
-    const webpackModifiers: UseWebpackModifiers = {
-      previewConfig: [previewConfigTransformer],
-      devServerConfig: [devServerConfigTransformer],
-    };
+    const overrideDependencies = react.overrideDependencies({
+      devDependencies: {
+        "@babel/plugin-syntax-class-properties": "7.12.13",
+        "@babel/preset-flow": "7.17.12",
+        "@babel/preset-react": "7.17.12",
+        "@babel/preset-typescript": "7.17.12",
+        "babel-plugin-import": "1.13.5",
+      },
+    });
 
-    //const tsModifiers: UseTypescriptModifiers = {
-    //  devConfig: [devConfigTransformer],
-    //  buildConfig: [buildConfigTransformer],
-    //};
-
-    // create a new Babel compiler
     const babelCompiler = babel.createCompiler({
       babelTransformOptions: babelConfig,
     });
-    // Get React's build pipeline
-    const basicBuildPipeline = react.reactEnv.getBuildPipe();
-    console.log("basice...", basicBuildPipeline);
-    // Filter out compilation build tasks
-    const basicBuildPipelineWithoutCompilation = basicBuildPipeline.filter(
-      (task) => task.aspectId !== CompilerAspect.id
-    );
 
-    const compilerBuildTask = [
-      compiler.createTask("BabelCompiler", babelCompiler),
-      ...basicBuildPipelineWithoutCompilation,
-    ];
-
-    const overrideObj = {
-      getCompiler: () => babelCompiler,
-      getBuildPipe: () => compilerBuildTask,
-    };
-
-    const compilerTransformer = envs.override(overrideObj);
-    const MyReactEnv = react.compose([
-      compilerTransformer,
-      /**
-       * Uncomment to override the config files for TypeScript, Webpack or Jest
-       * Your config gets merged with the defaults
-       */
-
-      // react.useTypescript(tsModifiers),  // note: this cannot be used in conjunction with react.overrideCompiler
-      // react.useWebpack(webpackModifiers),
-      // react.overrideJestConfig(require.resolve('./jest/jest.config')),
-
-      /**
-       * override the ESLint default config here then check your files for lint errors
-       * @example
-       * bit lint
-       * bit lint --fix
-       */
-      //react.useEslint({
-      //  transformers: [
-      //  (config) => {
-      //    config.setRule('no-console', ['error']);
-      //    return config;
-      //    }
-      //  ]
-      //}),
-
-      /**
-       * override the Prettier default config here the check your formatting
-       * @example
-       * bit format --check
-       * bit format
-       */
-      //react.usePrettier({
-      //  transformers: [
-      //    (config) => {
-      //      config.setKey('tabWidth', 2);
-      //      return config;
-      //    }
-      //  ]
-      //}),
-
-      /**
-       * override dependencies here
-       * @example
-       * Uncomment types to include version 17.0.3 of the types package
-       */
-      react.overrideDependencies({
-        devDependencies: {
-          // '@types/react': '17.0.3'
-        },
-      }),
+    const tsCompiler = react.env.getTsEsmCompiler("build", [
+      devTsConfigTransformer,
     ]);
-    envs.registerEnv(MyReactEnv);
-    return new MyReactMain();
+
+    const compiler = multiCompiler.createCompiler(
+      [babelCompiler, tsCompiler],
+      {}
+    );
+    const buildPipe = react.env.getBuildPipe({
+      tsModifier: { transformers: [devTsConfigTransformer] },
+    });
+
+    const overideBuildPipe = react.overrideBuildPipe(buildPipe);
+
+    const overrideCompiler = react.overrideCompiler(compiler);
+
+    const babelTask = babelCompiler.createTask("CustomCompiler");
+
+    const overrideCompilerTasks = react.overrideCompilerTasks([babelTask]);
+
+    const CustomReactEnvEnv = react.compose([
+      overrideCompiler,
+      overrideCompilerTasks,
+      overrideDependencies,
+      overideBuildPipe,
+    ]);
+
+    envs.registerEnv(CustomReactEnvEnv);
+    const customReact = new MyReactMain();
+    return customReact;
   }
 }
 

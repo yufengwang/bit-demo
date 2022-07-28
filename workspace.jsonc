@@ -39,8 +39,10 @@
     "packageManager": "teambit.dependencies/pnpm",
     "policy": {
       "dependencies": {
+        "@babel/core": "7.18.9",
+        "@babel/plugin-syntax-class-properties": "7.12.13",
         "@testing-library/react": "12.1.2",
-        "antd": "4.22.1",
+        "antd": "4.22.1"
       },
       "peerDependencies": {
         "react": "17.0.0",

@@ -1,18 +1,17 @@
 {
-  // add your compiler options here
-
   "compilerOptions": {
-    // "target": "es2017",
-    // "module": "es2015",
-    // "moduleResolution": "node",
-    // "lib": ["es2017", "dom"],
-    // "experimentalDecorators": true,
-    // "esModuleInterop": true,
-    // "outDir": "dist",
-    // "sourceMap": true,
-    // "emitDecoratorMetadata": true,
-    // "allowJs": true,
-    // "baseUrl": ".",
-    // "jsx": "react"
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": "./*",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist"
   }
 }
