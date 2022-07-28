@@ -4,6 +4,7 @@ export const babelConfig = {
       "@babel/preset-react",
       {
         runtime: "automatic",
+        targets: "> 0.25%, not dead",
       },
     ],
     "@babel/preset-flow",
@@ -11,7 +12,7 @@ export const babelConfig = {
   ],
   plugins: [
     "module:@babel/plugin-syntax-class-properties",
-    ["import", { libraryName: "antd", style: "css" }],
+    ["import", { libraryName: "antd", style: true }],
   ],
   sourceMaps: true,
 };

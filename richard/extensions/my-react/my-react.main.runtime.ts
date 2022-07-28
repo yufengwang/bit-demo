@@ -5,6 +5,7 @@ import { BabelAspect, BabelMain } from "@teambit/babel";
 import { BuilderAspect } from "@teambit/builder";
 import { MyReactAspect } from "./my-react.aspect";
 import { devConfigTransformer as devTsConfigTransformer } from "./typescript/ts-transformer";
+
 import {
   previewConfigTransformer,
   devServerConfigTransformer,
