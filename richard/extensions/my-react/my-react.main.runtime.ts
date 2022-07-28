@@ -5,6 +5,10 @@ import { BabelAspect, BabelMain } from "@teambit/babel";
 import { BuilderAspect } from "@teambit/builder";
 import { MyReactAspect } from "./my-react.aspect";
 import { devConfigTransformer as devTsConfigTransformer } from "./typescript/ts-transformer";
+import {
+  previewConfigTransformer,
+  devServerConfigTransformer,
+} from "./webpack/webpack-transformers";
 
 import MultiCompilerAspect, {
   MultiCompilerMain,
@@ -58,6 +62,11 @@ export class MyReactMain {
       tsModifier: { transformers: [devTsConfigTransformer] },
     });
 
+    const useWebpack = react.useWebpack({
+      previewConfig: [previewConfigTransformer],
+      devServerConfig: [devServerConfigTransformer],
+    });
+
     const overideBuildPipe = react.overrideBuildPipe(buildPipe);
 
     const overrideCompiler = react.overrideCompiler(compiler);
@@ -69,6 +78,7 @@ export class MyReactMain {
     const CustomReactEnvEnv = react.compose([
       overrideCompiler,
       overrideCompilerTasks,
+      useWebpack,
       overrideDependencies,
       overideBuildPipe,
     ]);

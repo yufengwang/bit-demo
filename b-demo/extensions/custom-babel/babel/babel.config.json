@@ -1,8 +1,0 @@
-{
-  "presets": ["@babel/preset-react", "@babel/preset-flow", "@babel/preset-typescript"],
-  "plugins": [
-    "module:@babel/plugin-syntax-class-properties",
-    ["import", { "libraryName": "antd", "style": "css" } ]
-  ],
-  "sourceMaps": true
-}

@@ -9,21 +9,15 @@
  */
 
 {
-    "extensions/custom-babel": {
-        "scope": "ohhoney1.b-demo",
-        "version": "0.0.2",
-        "mainFile": "index.ts",
-        "rootDir": "b-demo/extensions/custom-babel"
-    },
     "extensions/my-react": {
         "scope": "",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "richard/extensions/my-react"
     },
     "pc/ui/button": {
         "scope": "",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "richard/pc/ui/button"
     },
