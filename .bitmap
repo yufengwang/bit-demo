@@ -11,13 +11,19 @@
 {
     "extensions/my-react": {
         "scope": "",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.ts",
         "rootDir": "richard/extensions/my-react"
     },
+    "pc/biz/maiui-demo": {
+        "scope": "",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "richard/pc/biz/maiui-demo"
+    },
     "pc/ui/button": {
         "scope": "",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "mainFile": "index.ts",
         "rootDir": "richard/pc/ui/button"
     },

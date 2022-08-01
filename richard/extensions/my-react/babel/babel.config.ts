@@ -12,7 +12,20 @@ export const babelConfig = {
   ],
   plugins: [
     "module:@babel/plugin-syntax-class-properties",
-    ["import", { libraryName: "antd", style: true }],
+    [
+      "import",
+      { libraryName: "antd", libraryDirectory: "lib", style: true },
+      "antd",
+    ],
+    [
+      "import",
+      {
+        libraryName: "@weimai/maiui",
+        libraryDirectory: "lib",
+        style: true,
+      },
+      "@weimai/maiui",
+    ],
   ],
   sourceMaps: true,
 };

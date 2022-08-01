@@ -10,6 +10,7 @@ import {
   previewConfigTransformer,
   devServerConfigTransformer,
 } from "./webpack/webpack-transformers";
+import jestConfig from "./jest/jest.config";
 
 import MultiCompilerAspect, {
   MultiCompilerMain,
@@ -69,6 +70,9 @@ export class MyReactMain {
     });
 
     const overideBuildPipe = react.overrideBuildPipe(buildPipe);
+
+    console.log("transformed reeact jest", jestConfig);
+    react.overrideJestConfig(jestConfig);
 
     const overrideCompiler = react.overrideCompiler(compiler);
 

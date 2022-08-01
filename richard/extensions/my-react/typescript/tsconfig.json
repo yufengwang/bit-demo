@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "baseUrl": "./*",
-    "strict": true,
+    "strict": false,
     "allowSyntheticDefaultImports": true,
     "outDir": "dist"
   }
