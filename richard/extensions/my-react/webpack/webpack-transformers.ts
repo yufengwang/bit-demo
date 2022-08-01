@@ -26,20 +26,16 @@
         (el) => el.test.toString() === /(?<!\.module)\.less$/.toString()
       );
 
-      console.log("find rule", rule);
       if (rule) {
         const ruleObj = rule.use.find((el) => /less-loader/.test(el.loader));
 
-        console.log("find rule obj", ruleObj);
-        ruleObj.options.lessOptions = {
-          javascriptEnabled: true,
-        };
-
-        console.log("modified rule obj", ruleObj);
+        if (ruleObj) {
+          ruleObj.options.lessOptions = {
+            javascriptEnabled: true,
+          };
+        }
       }
     }
-
-    console.log("config... oneof...", oneOf);
 
     return config;
   }
