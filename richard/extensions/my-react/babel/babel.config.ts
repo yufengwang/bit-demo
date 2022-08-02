@@ -14,14 +14,14 @@ export const babelConfig = {
     "module:@babel/plugin-syntax-class-properties",
     [
       "import",
-      { libraryName: "antd", libraryDirectory: "lib", style: true },
+      { libraryName: "antd", libraryDirectory: "es", style: true },
       "antd",
     ],
     [
       "import",
       {
         libraryName: "@weimai/maiui",
-        libraryDirectory: "lib",
+        libraryDirectory: "es",
         style: true,
       },
       "@weimai/maiui",

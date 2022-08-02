@@ -23,14 +23,14 @@ const plugins = [
   ...basePlugins,
   [
     "import",
-    { libraryName: "antd", libraryDirectory: "lib", style: true },
+    { libraryName: "antd", libraryDirectory: "es", style: true },
     "antd",
   ],
   [
     "import",
     {
       libraryName: "@weimai/maiui",
-      libraryDirectory: "lib",
+      libraryDirectory: "es",
       style: true,
     },
     "@weimai/maiui",
