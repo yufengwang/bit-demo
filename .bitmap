@@ -11,7 +11,7 @@
 {
     "extensions/my-react": {
         "scope": "",
-        "version": "0.0.15",
+        "version": "0.0.17",
         "mainFile": "index.ts",
         "rootDir": "richard/extensions/my-react"
     },
@@ -31,7 +31,13 @@
         "scope": "",
         "version": "0.0.16",
         "mainFile": "index.ts",
-        "rootDir": "richard/pc/ui/button"
+        "rootDir": "richard/pc/ui/button",
+        "config": {
+            "richard/extensions/my-react": {},
+            "teambit.envs/envs": {
+                "env": "richard/extensions/my-react"
+            }
+        }
     },
     "$schema-version": "15.0.0"
 }

@@ -2,6 +2,9 @@ const { transform } = require("@babel/core");
 
 const generateProcessFunc = (presets, plugins) => {
   return (src, filename) => {
+    console.log("src..", src);
+    console.log("filename..", filename);
+
     const result = transform(src, {
       sourceMap: "inline",
       filename,

@@ -26,9 +26,9 @@ const plugins = [
   [require("@babel/plugin-transform-modules-commonjs")],
   ...basePlugins,
   [
+    // require("babel-plugin-import"),
     "import",
-    { libraryName: "antd", libraryDirectory: "es", style: true },
-    "antd",
+    { libraryName: "antd", libraryDirectory: "lib", style: true },
   ],
   // [
   //   "import",
