@@ -22,7 +22,7 @@
     ...reactJestConfig,
     transformIgnorePatterns: [
       ...reactJestConfig.transformIgnorePatterns,
-      `/${generateNodeModulesPattern({
+      `${generateNodeModulesPattern({
         packages: packagesToExclude,
       })}`,
     ],
