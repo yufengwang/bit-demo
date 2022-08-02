@@ -72,7 +72,9 @@ export class MyReactMain {
     const overideBuildPipe = react.overrideBuildPipe(buildPipe);
 
     console.log("transformed reeact jest", jestConfig);
-    react.overrideJestConfig(jestConfig);
+    const overideJest = react.overrideJestConfig(
+      require.resolve("./jest/jest.config")
+    );
 
     const overrideCompiler = react.overrideCompiler(compiler);
 
@@ -81,6 +83,7 @@ export class MyReactMain {
     const overrideCompilerTasks = react.overrideCompilerTasks([babelTask]);
 
     const CustomReactEnvEnv = react.compose([
+      overideJest,
       overrideCompiler,
       overrideCompilerTasks,
       useWebpack,
