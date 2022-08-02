@@ -8,7 +8,7 @@
   } = require("@teambit/dependencies.modules.packages-excluder");
 
   const cjsTransformer = require.resolve("./cjs-transformer.js");
-  const packagesToExclude = ["antd", "@weimai"];
+  const packagesToExclude = ["antd"];
 
   // const packagesToExclude = ["@weimai/maiui"];
 
@@ -17,12 +17,11 @@
     reactJestConfig.transformIgnorePatterns
   );
 
-  console.log("reeact jest", reactJestConfig);
-  module.exports = {
+  const object = {
     ...reactJestConfig,
     transformIgnorePatterns: [
       ...reactJestConfig.transformIgnorePatterns,
-      `${generateNodeModulesPattern({
+      `/${generateNodeModulesPattern({
         packages: packagesToExclude,
       })}`,
     ],
@@ -31,3 +30,7 @@
       "^.+\\.(js|jsx|ts|tsx)$": cjsTransformer,
     },
   };
+
+  console.log("reeact jest", object);
+
+  module.exports = object;

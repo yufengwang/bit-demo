@@ -19,7 +19,13 @@
         "scope": "",
         "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "richard/pc/biz/maiui-demo"
+        "rootDir": "richard/pc/biz/maiui-demo",
+        "config": {
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
+            }
+        }
     },
     "pc/ui/button": {
         "scope": "",

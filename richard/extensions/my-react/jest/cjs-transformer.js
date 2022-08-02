@@ -5,21 +5,21 @@ const { basePlugins } = require("./base-transformer-plugins");
 const { basePresets } = require("./base-transformer-presets");
 
 const presets = [
+  ...basePresets,
   [
     require("@babel/preset-env"),
-    {
-      // runtime: "automatic",
-      targets: "> 0.25%, not dead",
-    },
     // {
-    //   targets: {
-    //     node: 12,
-    //   },
-    //   useBuiltIns: "usage",
-    //   corejs: 3,
+    //   // runtime: "automatic",
+    //   targets: "> 0.25%, not dead",
     // },
+    {
+      targets: {
+        node: 12,
+      },
+      useBuiltIns: "usage",
+      corejs: 3,
+    },
   ],
-  ...basePresets,
 ];
 
 const plugins = [
@@ -30,15 +30,15 @@ const plugins = [
     { libraryName: "antd", libraryDirectory: "es", style: true },
     "antd",
   ],
-  [
-    "import",
-    {
-      libraryName: "@weimai/maiui",
-      libraryDirectory: "es",
-      style: true,
-    },
-    "@weimai/maiui",
-  ],
+  // [
+  //   "import",
+  //   {
+  //     libraryName: "@weimai/maiui",
+  //     libraryDirectory: "es",
+  //     style: true,
+  //   },
+  //   "@weimai/maiui",
+  // ],
 ];
 
 module.exports = {
