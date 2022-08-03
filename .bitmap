@@ -21,9 +21,9 @@
         "mainFile": "index.ts",
         "rootDir": "richard/pc/biz/maiui-demo",
         "config": {
-            "teambit.react/react": {},
+            "richard/extensions/my-react": {},
             "teambit.envs/envs": {
-                "env": "teambit.react/react"
+                "env": "richard/extensions/my-react"
             }
         }
     },

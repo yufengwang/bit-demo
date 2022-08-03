@@ -2,7 +2,6 @@ const { transform } = require("@babel/core");
 
 const generateProcessFunc = (presets, plugins) => {
   return (src, filename) => {
-    console.log("src..", src);
     console.log("filename..", filename);
 
     const result = transform(src, {
@@ -13,6 +12,10 @@ const generateProcessFunc = (presets, plugins) => {
       babelrc: false,
       configFile: false,
     });
+
+    if (!/node_modules/.test(filename) && result) {
+      console.log("foo", result.code);
+    }
 
     return result ? result.code : src;
   };

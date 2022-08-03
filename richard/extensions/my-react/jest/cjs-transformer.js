@@ -14,7 +14,7 @@ const presets = [
     // },
     {
       targets: {
-        node: 12,
+        node: "current",
       },
       useBuiltIns: "usage",
       corejs: 3,
@@ -23,22 +23,24 @@ const presets = [
 ];
 
 const plugins = [
-  [require("@babel/plugin-transform-modules-commonjs")],
+  // [require("@babel/plugin-transform-modules-commonjs")],
   ...basePlugins,
   [
-    // require("babel-plugin-import"),
-    "import",
-    { libraryName: "antd", libraryDirectory: "lib", style: true },
+    require("babel-plugin-import"),
+    // "import",
+    { libraryName: "antd", libraryDirectory: "es", style: true },
+    "antd",
   ],
-  // [
-  //   "import",
-  //   {
-  //     libraryName: "@weimai/maiui",
-  //     libraryDirectory: "es",
-  //     style: true,
-  //   },
-  //   "@weimai/maiui",
-  // ],
+  [
+    require("babel-plugin-import"),
+    // "import",
+    {
+      libraryName: "@weimai/maiui",
+      libraryDirectory: "es",
+      style: true,
+    },
+    "@weimai/maiui",
+  ],
 ];
 
 module.exports = {

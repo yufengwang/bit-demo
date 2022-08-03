@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { BasicMaiuiDemo } from "./maiui-demo.composition";
 
+// 000
 it("should render with the correct text", () => {
   const { getByText } = render(<BasicMaiuiDemo />);
   const rendered = getByText("hello world!");

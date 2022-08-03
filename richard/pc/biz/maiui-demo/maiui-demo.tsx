@@ -3,7 +3,7 @@ import { Button } from "@weimai/maiui";
 
 export type MaiuiDemoProps = {
   /**
-   * a node to be rendered in the special component.
+   * a node to be rendered in the special component.aaa
    */
   children?: ReactNode;
 };

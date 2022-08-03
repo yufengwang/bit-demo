@@ -9,17 +9,17 @@
 
   const cjsTransformer = require.resolve("./cjs-transformer.js");
 
-  const packagesToExclude = ["antd"];
+  // const packagesToExclude = ["antd", "@babel"];
 
   // const packagesToExclude = ["@weimai/maiui"];
 
   const object = {
     ...reactJestConfig,
     transformIgnorePatterns: [
-      ...reactJestConfig.transformIgnorePatterns,
-      `/${generateNodeModulesPattern({
-        packages: packagesToExclude,
-      })}`,
+      // ...reactJestConfig.transformIgnorePatterns,
+      // `/${generateNodeModulesPattern({
+      //   packages: packagesToExclude,
+      // })}`,
     ],
     transform: {
       ...reactJestConfig.transform,
