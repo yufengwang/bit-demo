@@ -9,11 +9,94 @@
  */
 
 {
+    "envs/env-with-compiler": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "richard/envs/env-with-compiler",
+        "config": {
+            "teambit.envs/envs": {
+                "env": "teambit.harmony/aspect"
+            },
+            "teambit.harmony/aspect": {},
+            "teambit.dependencies/dependency-resolver": {},
+            "teambit.compilation/compiler": {},
+            "teambit.component/dev-files": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.pipelines/builder": {},
+            "teambit.component/forking": {
+                "forkedFrom": {
+                    "scope": "learnbit.envs",
+                    "name": "envs/env-with-compiler",
+                    "version": "0.0.1"
+                }
+            }
+        }
+    },
+    "envs/my-react": {
+        "scope": "",
+        "version": "0.0.2",
+        "mainFile": "index.ts",
+        "rootDir": "richard/envs/my-react"
+    },
+    "examples/modules/loc-stats": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "richard/examples/modules/loc-stats",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {},
+            "teambit.component/dev-files": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.envs/envs": {},
+            "teambit.pipelines/builder": {},
+            "teambit.component/forking": {
+                "forkedFrom": {
+                    "scope": "teambit.pipelines",
+                    "name": "examples/modules/loc-stats",
+                    "version": "0.0.2"
+                }
+            }
+        }
+    },
     "extensions/my-react": {
         "scope": "",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.ts",
         "rootDir": "richard/extensions/my-react"
+    },
+    "mdx": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "richard/mdx",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "@babel/helper-plugin-test-runner": "7.16.7"
+                    }
+                }
+            },
+            "teambit.envs/envs": {
+                "env": "teambit.envs/env"
+            },
+            "teambit.envs/env": {},
+            "teambit.component/dev-files": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.pipelines/builder": {},
+            "teambit.compilation/compiler": {},
+            "teambit.component/forking": {
+                "forkedFrom": {
+                    "scope": "teambit.mdx",
+                    "name": "mdx",
+                    "version": "0.0.787"
+                }
+            }
+        }
     },
     "pc/biz/maiui-demo": {
         "scope": "",
@@ -21,23 +104,23 @@
         "mainFile": "index.ts",
         "rootDir": "richard/pc/biz/maiui-demo",
         "config": {
-            "richard/extensions/my-react": {},
+            "teambit.react/react": {},
             "teambit.envs/envs": {
-                "env": "richard/extensions/my-react"
+                "env": "teambit.react/react"
             }
         }
     },
     "pc/ui/button": {
         "scope": "",
-        "version": "0.0.16",
+        "version": "0.0.19",
         "mainFile": "index.ts",
-        "rootDir": "richard/pc/ui/button",
-        "config": {
-            "richard/extensions/my-react": {},
-            "teambit.envs/envs": {
-                "env": "richard/extensions/my-react"
-            }
-        }
+        "rootDir": "richard/pc/ui/button"
+    },
+    "ui/react-demo": {
+        "scope": "",
+        "version": "0.0.2",
+        "mainFile": "index.ts",
+        "rootDir": "richard/ui/react-demo"
     },
     "$schema-version": "15.0.0"
 }

@@ -57,7 +57,7 @@ export class MyReactMain {
     ]);
 
     const compiler = multiCompiler.createCompiler(
-      [babelCompiler, tsCompiler],
+      [tsCompiler, babelCompiler],
       {}
     );
     const buildPipe = react.env.getBuildPipe({
