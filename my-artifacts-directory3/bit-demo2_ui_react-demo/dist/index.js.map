@@ -1,1 +1,0 @@
-{"version":3,"names":["ReactDemo"],"sources":["index.ts"],"sourcesContent":["export { ReactDemo } from './react-demo';\nexport type { ReactDemoProps } from './react-demo';\n"],"mappings":"AAAA,SAASA,SAAT,QAA0B,cAA1B"}
