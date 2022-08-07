@@ -33,18 +33,6 @@
             }
         }
     },
-    "pc/biz/maiui-demo": {
-        "scope": "",
-        "version": "",
-        "mainFile": "index.ts",
-        "rootDir": "richard/pc/biz/maiui-demo",
-        "config": {
-            "teambit.react/react": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react"
-            }
-        }
-    },
     "pc/ui/button": {
         "scope": "",
         "version": "",
@@ -59,15 +47,9 @@
     },
     "ui/react-demo": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "richard/ui/react-demo",
-        "config": {
-            "teambit.react/react": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react"
-            }
-        }
+        "rootDir": "richard/ui/react-demo"
     },
     "$schema-version": "15.0.0"
 }
