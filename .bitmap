@@ -9,98 +9,33 @@
  */
 
 {
-    "envs/env-with-compiler": {
-        "scope": "",
-        "version": "",
-        "mainFile": "index.ts",
-        "rootDir": "richard/envs/env-with-compiler",
-        "config": {
-            "teambit.envs/envs": {
-                "env": "teambit.harmony/aspect"
-            },
-            "teambit.harmony/aspect": {},
-            "teambit.dependencies/dependency-resolver": {},
-            "teambit.compilation/compiler": {},
-            "teambit.component/dev-files": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/forking": {
-                "forkedFrom": {
-                    "scope": "learnbit.envs",
-                    "name": "envs/env-with-compiler",
-                    "version": "0.0.1"
-                }
-            }
-        }
-    },
     "envs/my-react": {
         "scope": "",
-        "version": "0.0.2",
-        "mainFile": "index.ts",
-        "rootDir": "richard/envs/my-react"
-    },
-    "examples/modules/loc-stats": {
-        "scope": "",
         "version": "",
         "mainFile": "index.ts",
-        "rootDir": "richard/examples/modules/loc-stats",
+        "rootDir": "richard/envs/my-react",
         "config": {
-            "teambit.dependencies/dependency-resolver": {},
-            "teambit.component/dev-files": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.envs/envs": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/forking": {
-                "forkedFrom": {
-                    "scope": "teambit.pipelines",
-                    "name": "examples/modules/loc-stats",
-                    "version": "0.0.2"
-                }
+            "teambit.envs/env": {},
+            "teambit.envs/envs": {
+                "env": "teambit.envs/env"
             }
         }
     },
     "extensions/my-react": {
         "scope": "",
-        "version": "0.0.18",
-        "mainFile": "index.ts",
-        "rootDir": "richard/extensions/my-react"
-    },
-    "mdx": {
-        "scope": "",
         "version": "",
         "mainFile": "index.ts",
-        "rootDir": "richard/mdx",
+        "rootDir": "richard/extensions/my-react",
         "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "dependencies": {
-                        "@babel/helper-plugin-test-runner": "7.16.7"
-                    }
-                }
-            },
+            "teambit.envs/env": {},
             "teambit.envs/envs": {
                 "env": "teambit.envs/env"
-            },
-            "teambit.envs/env": {},
-            "teambit.component/dev-files": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.pipelines/builder": {},
-            "teambit.compilation/compiler": {},
-            "teambit.component/forking": {
-                "forkedFrom": {
-                    "scope": "teambit.mdx",
-                    "name": "mdx",
-                    "version": "0.0.787"
-                }
             }
         }
     },
     "pc/biz/maiui-demo": {
         "scope": "",
-        "version": "0.0.1",
+        "version": "",
         "mainFile": "index.ts",
         "rootDir": "richard/pc/biz/maiui-demo",
         "config": {
@@ -112,15 +47,27 @@
     },
     "pc/ui/button": {
         "scope": "",
-        "version": "0.0.19",
+        "version": "",
         "mainFile": "index.ts",
-        "rootDir": "richard/pc/ui/button"
+        "rootDir": "richard/pc/ui/button",
+        "config": {
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
+            }
+        }
     },
     "ui/react-demo": {
         "scope": "",
-        "version": "0.0.2",
+        "version": "",
         "mainFile": "index.ts",
-        "rootDir": "richard/ui/react-demo"
+        "rootDir": "richard/ui/react-demo",
+        "config": {
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
+            }
+        }
     },
     "$schema-version": "15.0.0"
 }
