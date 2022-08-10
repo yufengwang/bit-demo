@@ -11,19 +11,13 @@
 {
     "envs/my-react": {
         "scope": "",
-        "version": "",
+        "version": "0.0.6",
         "mainFile": "index.ts",
-        "rootDir": "richard/envs/my-react",
-        "config": {
-            "teambit.envs/env": {},
-            "teambit.envs/envs": {
-                "env": "teambit.envs/env"
-            }
-        }
+        "rootDir": "richard/envs/my-react"
     },
     "extensions/my-react": {
         "scope": "",
-        "version": "",
+        "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "richard/extensions/my-react",
         "config": {
@@ -58,7 +52,7 @@
     },
     "pc/ui/button": {
         "scope": "",
-        "version": "",
+        "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "richard/pc/ui/button",
         "config": {
@@ -70,15 +64,9 @@
     },
     "ui/react-demo": {
         "scope": "",
-        "version": "0.0.1",
+        "version": "0.0.6",
         "mainFile": "index.ts",
-        "rootDir": "richard/ui/react-demo",
-        "config": {
-            "teambit.react/react": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react"
-            }
-        }
+        "rootDir": "richard/ui/react-demo"
     },
     "$schema-version": "15.0.0"
 }

@@ -11,15 +11,15 @@ const plugins = [
     { libraryName: "antd", libraryDirectory: "es", style: true },
     "antd",
   ],
-  [
-    "import",
-    {
-      libraryName: "@weimai/maiui",
-      libraryDirectory: "es",
-      style: true,
-    },
-    "@weimai/maiui",
-  ],
+  // [
+  //   "import",
+  //   {
+  //     libraryName: "@weimai/maiui",
+  //     libraryDirectory: "es",
+  //     style: true,
+  //   },
+  //   "@weimai/maiui",
+  // ],
 ];
 
 export const babelConfig = {

@@ -1,4 +1,6 @@
 import { MainRuntime } from "@teambit/cli";
+
+import type { CompilerMain } from "@teambit/compiler";
 import {
   ReactAspect,
   ReactMain,
@@ -18,17 +20,20 @@ import {
   buildConfigTransformer,
 } from "./typescript/ts-transformer";
 
+import { CompilerAspect } from "@teambit/compiler";
+
 export class MyReactMain {
   static slots = [];
 
-  static dependencies = [ReactAspect, EnvsAspect, BabelAspect];
+  static dependencies = [ReactAspect, EnvsAspect, BabelAspect, CompilerAspect];
 
   static runtime = MainRuntime;
 
-  static async provider([react, envs, babel]: [
+  static async provider([react, envs, babel, compiler]: [
     ReactMain,
     EnvsMain,
-    BabelMain
+    BabelMain,
+    CompilerMain
   ]) {
     const webpackModifiers: UseWebpackModifiers = {
       previewConfig: [previewConfigTransformer],
@@ -39,10 +44,41 @@ export class MyReactMain {
       devConfig: [devConfigTransformer],
       buildConfig: [buildConfigTransformer],
     };
-    //
+
+    const babelCompiler = babel.createCompiler({
+      babelTransformOptions: babelConfig,
+      distDir: "dist",
+      distGlobPatterns: [
+        `dist/**`,
+        `!dist/**/*.d.ts`,
+        `!dist/tsconfig.tsbuildinfo`,
+      ],
+    });
+
+    const compilerOverride = envs.override({
+      getCompiler: () => {
+        return babelCompiler;
+      },
+    });
+
+    const transformer = (config) => {
+      config
+        // .mergeTsConfig(tsconfig)
+        .setArtifactName("declaration")
+        .setDistGlobPatterns([`dist/**/*.d.ts`])
+        .setShouldCopyNonSupportedFiles(false);
+      return config;
+    };
+
+    const tsCompiler = react.env.getTsEsmCompiler("build", [transformer]);
+
+    const buildPipeOverride = react.overrideBuildPipe([
+      compiler.createTask("MyTypescriptCompiler", tsCompiler),
+      compiler.createTask("MyBabelCompiler", babelCompiler),
+    ]);
 
     const useWebpack = react.useWebpack(webpackModifiers);
-    const useTs = react.useTypescript(tsModifiers);
+    // const useTs = react.useTypescript(tsModifiers);
 
     const overrideDependencies = react.overrideDependencies({
       devDependencies: {
@@ -54,21 +90,23 @@ export class MyReactMain {
       },
     });
 
-    const babelCompiler = babel.createCompiler({
-      babelTransformOptions: babelConfig,
-    });
+    // const babelCompiler = babel.createCompiler({
+    //   babelTransformOptions: babelConfig,
+    // });
 
-    const babelTask = babelCompiler.createTask("MyBabelCompiler");
+    // const babelTask = babelCompiler.createTask("MyBabelCompiler");
 
     // const overrideCompiler = react.overrideCompiler(babelCompiler);
 
-    const overrideCompilerTasks = react.overrideCompilerTasks([babelTask]);
+    // const overrideCompilerTasks = react.overrideCompilerTasks([babelTask]);
 
     const MyReactEnv = react.compose([
-      useTs,
+      compilerOverride,
+      // useTs,
       useWebpack,
+      buildPipeOverride,
       // overrideCompiler,
-      overrideCompilerTasks,
+      // overrideCompilerTasks,
       overrideDependencies,
       /**
        * Uncomment to override the config files for TypeScript, Webpack or Jest
