@@ -10,7 +10,7 @@
 
 {
     "envs/my-react": {
-        "scope": "",
+        "scope": "richard",
         "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "richard/envs/my-react"
@@ -63,7 +63,7 @@
         }
     },
     "ui/react-demo": {
-        "scope": "",
+        "scope": "richard",
         "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "richard/ui/react-demo"
