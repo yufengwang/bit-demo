@@ -33,6 +33,29 @@
             }
         }
     },
+    "harmony": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "richard/harmony",
+        "config": {
+            "teambit.harmony/node": {},
+            "teambit.component/dev-files": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.envs/envs": {},
+            "teambit.dependencies/dependency-resolver": {},
+            "teambit.pipelines/builder": {},
+            "teambit.compilation/compiler": {},
+            "teambit.component/forking": {
+                "forkedFrom": {
+                    "scope": "teambit.harmony",
+                    "name": "harmony",
+                    "version": "0.3.3"
+                }
+            }
+        }
+    },
     "pc/ui/button": {
         "scope": "",
         "version": "",
@@ -49,7 +72,13 @@
         "scope": "",
         "version": "0.0.1",
         "mainFile": "index.ts",
-        "rootDir": "richard/ui/react-demo"
+        "rootDir": "richard/ui/react-demo",
+        "config": {
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
+            }
+        }
     },
     "$schema-version": "15.0.0"
 }

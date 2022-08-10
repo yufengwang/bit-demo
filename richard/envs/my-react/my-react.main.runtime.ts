@@ -14,8 +14,8 @@ import {
   devServerConfigTransformer,
 } from "./webpack/webpack-transformers";
 import {
- devConfigTransformer,
- buildConfigTransformer,
+  devConfigTransformer,
+  buildConfigTransformer,
 } from "./typescript/ts-transformer";
 
 export class MyReactMain {
@@ -36,13 +36,13 @@ export class MyReactMain {
     };
 
     const tsModifiers: UseTypescriptModifiers = {
-     devConfig: [devConfigTransformer],
-     buildConfig: [buildConfigTransformer],
+      devConfig: [devConfigTransformer],
+      buildConfig: [buildConfigTransformer],
     };
     //
 
     const useWebpack = react.useWebpack(webpackModifiers);
-    const useTs = react.useTypescript(tsModifiers)
+    const useTs = react.useTypescript(tsModifiers);
 
     const overrideDependencies = react.overrideDependencies({
       devDependencies: {
@@ -60,14 +60,14 @@ export class MyReactMain {
 
     const babelTask = babelCompiler.createTask("MyBabelCompiler");
 
-    const overrideCompiler = react.overrideCompiler(babelCompiler);
+    // const overrideCompiler = react.overrideCompiler(babelCompiler);
 
     const overrideCompilerTasks = react.overrideCompilerTasks([babelTask]);
 
     const MyReactEnv = react.compose([
       useTs,
       useWebpack,
-      overrideCompiler,
+      // overrideCompiler,
       overrideCompilerTasks,
       overrideDependencies,
       /**
