@@ -15,18 +15,6 @@
         "mainFile": "index.ts",
         "rootDir": "richard/envs/my-react"
     },
-    "extensions/my-react": {
-        "scope": "",
-        "version": "0.0.7",
-        "mainFile": "index.ts",
-        "rootDir": "richard/extensions/my-react",
-        "config": {
-            "teambit.envs/env": {},
-            "teambit.envs/envs": {
-                "env": "teambit.envs/env"
-            }
-        }
-    },
     "harmony": {
         "scope": "",
         "version": "",
